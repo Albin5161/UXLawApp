@@ -11,7 +11,9 @@ struct ContentView: View {
                     LibrarySearchView()
                 case .insights:
                     ProfileMasteryView()
-                case .explore, .saved:
+                case .explore:
+                    HomepageView()
+                case .saved:
                     PlaceholderView(tab: selectedTab)
                 }
             }

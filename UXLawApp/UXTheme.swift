@@ -23,6 +23,7 @@ enum UXColor {
     static let secondaryContainer = Color(hex: "d0ed00")
     static let secondaryFixed     = Color(hex: "d2f000")
     static let onSecondaryFixed   = Color(hex: "191e00")
+    static let onTertiaryContainer = Color(hex: "ffede7")
     static let tertiary           = Color(hex: "983307")
     static let background         = Color(hex: "fbf8ff")
     static let surface            = Color(hex: "fbf8ff")
