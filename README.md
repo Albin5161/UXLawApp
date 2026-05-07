@@ -8,9 +8,14 @@ A SwiftUI app for learning UX psychology principles — laws, cognitive patterns
 |:---:|:---:|:---:|
 | ![Library & Search](Screenshots/library-search.png) | ![Miller's Law](Screenshots/millers-law.png) | ![Profile & Mastery](Screenshots/profile-mastery.png) |
 
+| Homepage — UX Laws | Law Detail — Hick's Law |
+|:---:|:---:|
+| ![Homepage](Screenshots/homepage-ux-laws.png) | ![Hick's Law](Screenshots/hicks-law.png) |
+
 ## Features
 
 - **Library** — Browse foundational UX laws with search and category filters
+- **Explore** — Editorial card grid of laws with navigation to detail screens
 - **Law Detail** — Deep-dive articles with visual examples and implementation strategies
 - **Profile & Mastery** — Track learning progress across knowledge domains
 
