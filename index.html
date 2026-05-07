@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Psychology — iOS App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #0040e0;
+      --background: #fbf8ff;
+      --on-surface: #191b24;
+      --on-surface-variant: #434656;
+      --surface-container-low: #f3f2ff;
+      --outline-variant: #c4c5d9;
+      --secondary-container: #d0ed00;
+      --on-secondary-fixed: #191e00;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--background);
+      color: var(--on-surface);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: white;
+      border-bottom: 1px solid var(--outline-variant);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--on-surface);
+    }
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: #dde1ff;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 96px 48px 72px;
+      text-align: center;
+    }
+    .hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 1.1;
+      color: var(--on-surface);
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--on-surface-variant);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--on-surface);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 999px;
+    }
+
+    /* SCREENS */
+    .screens-section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 36px;
+      color: var(--on-surface);
+      margin-bottom: 48px;
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .screen-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .screen-card img {
+      width: 100%;
+      border-radius: 24px;
+      border: 1px solid var(--outline-variant);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      display: block;
+    }
+    .screen-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .screen-card p {
+      font-size: 13px;
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+    }
+
+    /* FEATURES */
+    .features-section {
+      background: var(--on-surface);
+      padding: 80px 48px;
+    }
+    .features-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .features-section .section-label { color: var(--secondary-container); }
+    .features-section .section-title { color: white; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .feature {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .feature h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+    }
+    .feature p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* STACK */
+    .stack-section {
+      padding: 80px 48px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .chip {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--on-surface);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      padding: 8px 18px;
+      border-radius: 999px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--outline-variant);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--on-surface-variant);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      nav, .hero, .screens-section, .features-section, .stack-section, footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .hero { padding-top: 64px; }
+      .screens-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">UX Psychology</span>
+    <a class="nav-badge" href="https://github.com/Albin5161/UXLawApp">View on GitHub</a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-label">iOS App — SwiftUI</p>
+    <h1>Learn the Laws<br>of Great Design</h1>
+    <p>A native iOS app for exploring UX psychology principles — cognitive laws, mental models, and design heuristics — built with SwiftUI.</p>
+    <a class="hero-cta" href="https://github.com/Albin5161/UXLawApp">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      View Source
+    </a>
+  </section>
+
+  <section class="screens-section">
+    <p class="section-label">Screens</p>
+    <h2 class="section-title">Five fully designed views</h2>
+    <div class="screens-grid">
+      <div class="screen-card">
+        <img src="Screenshots/library-search.png" alt="Library & Search" />
+        <h3>Library & Search</h3>
+        <p>Browse and filter foundational UX laws</p>
+      </div>
+      <div class="screen-card">
+        <img src="Screenshots/millers-law.png" alt="Miller's Law" />
+        <h3>Miller's Law</h3>
+        <p>Deep-dive law detail with visual examples</p>
+      </div>
+      <div class="screen-card">
+        <img src="Screenshots/hicks-law.png" alt="Hick's Law" />
+        <h3>Hick's Law</h3>
+        <p>Anti-pattern vs ideal flow comparison</p>
+      </div>
+      <div class="screen-card">
+        <img src="Screenshots/homepage-ux-laws.png" alt="Homepage" />
+        <h3>Homepage</h3>
+        <p>Editorial law card grid with navigation</p>
+      </div>
+      <div class="screen-card">
+        <img src="Screenshots/profile-mastery.png" alt="Profile & Mastery" />
+        <h3>Profile & Mastery</h3>
+        <p>Progress tracking and learning stats</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="features-inner">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">What's inside</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">📚</div>
+          <h4>Library</h4>
+          <p>Search and filter laws by category with a clean editorial list layout</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <h4>Law Details</h4>
+          <p>Full articles with visual analogies, implementation strategies, and quotes</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🗺️</div>
+          <h4>Explore</h4>
+          <p>Homepage grid of cognitive laws with navigation to detailed views</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📈</div>
+          <h4>Mastery Tracking</h4>
+          <p>Progress cards, reading streaks, and knowledge domain metrics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-section">
+    <p class="section-label">Tech Stack</p>
+    <h2 class="section-title">Built with</h2>
+    <div class="stack-chips">
+      <span class="chip">SwiftUI</span>
+      <span class="chip">iOS 17+</span>
+      <span class="chip">Xcode 26</span>
+      <span class="chip">Playfair Display</span>
+      <span class="chip">Manrope</span>
+      <span class="chip">Material Design 3 Tokens</span>
+      <span class="chip">AsyncImage</span>
+      <span class="chip">NavigationStack</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>UX Psychology iOS App</span>
+    <a href="https://github.com/Albin5161/UXLawApp/tree/UXLawsIOSApp">github.com/Albin5161/UXLawApp</a>
+  </footer>
+
+</body>
+</html>
