@@ -16,8 +16,8 @@ struct LawDetailMillersLawView: View {
         }
         .background(UXColor.background)
         .ignoresSafeArea(edges: .top)
-        .overlay(alignment: .top) { topBar }
-        .navigationBarHidden(true)
+        .safeAreaInset(edge: .top, spacing: 0) { topBar }
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private var topBar: some View {
@@ -46,13 +46,7 @@ struct LawDetailMillersLawView: View {
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
-        .background(
-            Color.white
-                .overlay(alignment: .bottom) { Divider() }
-        )
-        .padding(.top, UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .first?.windows.first?.safeAreaInsets.top ?? 44)
+        .background(Color.white.overlay(alignment: .bottom) { Divider() })
     }
 
     private var heroSection: some View {
@@ -187,8 +181,13 @@ struct LawDetailMillersLawView: View {
                     }
                 } else {
                     VStack(spacing: 6) {
-                        ForEach([1.0, 1.0, 0.9, 0.95, 0.85, 1.0, 0.9, 0.95, 0.8, 0.7], id: \.self) { w in
-                            RoundedRectangle(cornerRadius: 4).fill(UXColor.surfaceContainerHighest).frame(maxWidth: .infinity).frame(width: .infinity * w, height: 12)
+                        ForEach([CGFloat(1), 1, 0.9, 0.95, 0.85, 1, 0.9, 0.95, 0.8, 0.7], id: \.self) { w in
+                            GeometryReader { geo in
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(UXColor.surfaceContainerHighest)
+                                    .frame(width: geo.size.width * w, height: 12)
+                            }
+                            .frame(height: 12)
                         }
                     }
                 }
@@ -209,7 +208,7 @@ struct LawDetailMillersLawView: View {
                 .font(.system(size: 36))
                 .foregroundStyle(UXColor.primary.opacity(0.2))
 
-            Text(""The organization of information is just as important as the information itself."")
+            Text("\u{201C}The organization of information is just as important as the information itself.\u{201D}")
                 .font(UXFont.headline(22))
                 .foregroundStyle(UXColor.onSurface)
                 .multilineTextAlignment(.center)
